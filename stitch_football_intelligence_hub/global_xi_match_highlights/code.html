@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global XI - Match Highlights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&amp;family=Montserrat:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#e9c400",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary": "#3c2f00",
+                        "surface-tint": "#e9c349",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#221b00",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "outline-variant": "#4d4635",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffe088",
+                        "secondary": "#fff9ef",
+                        "secondary-fixed": "#ffe16d",
+                        "primary-container": "#d4af37",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "secondary-container": "#ffdb3c",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "inverse-primary": "#735c00",
+                        "primary": "#f2ca50",
+                        "surface-variant": "#353534",
+                        "tertiary": "#cecece",
+                        "on-tertiary": "#2f3131",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface": "#131313",
+                        "outline": "#99907c",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-tertiary-container": "#434546",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#554300",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#725f00",
+                        "on-secondary": "#3a3000",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#241a00",
+                        "primary-fixed-dim": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 hidden md:flex">
+<div class="flex justify-between items-center h-20 px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-display-lg text-primary uppercase tracking-tighter">GLOBAL XI</div>
+<div class="flex-1 flex justify-center">
+<ul class="flex space-x-8 font-title-md text-title-md">
+<li><a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Football AI</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Predictions</a></li>
+<li><a class="text-primary font-bold border-b-2 border-primary pb-1 scale-95 duration-150" href="#">Highlights</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">News</a></li>
+</ul>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary transition-all duration-300">search</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary transition-all duration-300">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Header Section -->
+<header class="mb-12 text-center md:text-left">
+<h1 class="font-display-lg text-display-lg text-on-background mb-4">International Match Highlights</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Relive unforgettable moments from the international game.</p>
+</header>
+<!-- Filters -->
+<div class="flex flex-wrap gap-4 mb-10 border-b border-outline-variant/30 pb-4">
+<button class="px-6 py-2 rounded-full border border-primary text-primary bg-primary/10 font-label-sm text-label-sm hover:bg-primary/20 transition-colors">All</button>
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm hover:border-primary hover:text-primary transition-colors">World Cup</button>
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm hover:border-primary hover:text-primary transition-colors">EURO</button>
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm hover:border-primary hover:text-primary transition-colors">Nations League</button>
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm hover:border-primary hover:text-primary transition-colors">Other</button>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 group flex flex-col">
+<div class="relative w-full aspect-video bg-surface-dim">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A dramatic, high-contrast action shot of the 2022 World Cup Final between Argentina and France. The stadium is illuminated under bright floodlights with deep shadows, showcasing a tense moment on the pitch. The aesthetic is premium sports photography, blending deep blacks with vibrant team colors and gold highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlhmFJ3NP5STQ_toSS0GC0Z9KEZheLYj1Ko5A0QaoZVDWePwFUGkiiDp6oDZ-aP5t-ym2-2DBO-z5-K1R3PCcc-GKgUhDt19eBm5TJwQlHsXKqSQTLFFGUOhOUd0g9gkSr-Sleh4QiYKFENdd9_Xl9Ix0AWbjpHLEK0NbtUbLzi09HKqZuOedXrk7WpRqx2x5jYbKHkUqOBPMyabFkP9RYJwJK3otiVolPsum96IlsxWPmZRqeZ6BBBA"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">World Cup • 2022</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">FIFA</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-6 flex-1">Argentina vs France - World Cup Final 2022</h3>
+<button class="flex items-center text-primary font-label-sm text-label-sm uppercase tracking-widest hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined mr-2">play_arrow</span> Watch Highlights
+                    </button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 group flex flex-col">
+<div class="relative w-full aspect-video bg-surface-dim">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A stunning, moody wide shot of a European Championship football match under stadium lights. The crowd is a blur of passion in the background. The visual style is luxury sports, featuring deep monochromatic tones punctuated by sharp, high-key lighting on the players and subtle gold accents in the stadium architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIHQJaWGWwiW8LceE5pNi7RWVh8cQJosIQnh9tTrQG3aqWA8b_Wdgy7IuSXoZYxXMgsL2S5OFmtOtkEYzCNDBHcA_UAno7GI4ZoYRn6iTGlyNTzyE0iCLXFDRsHtlZKXT8l59ftHEw5Xylp5KjmCsCi8CI9lFWdBzT-TLv6WZb0d4tJ-Fc4rHIuTKpo-0cpusno6NE9TgLV3Hq5eariFIvM8m0Ap9upguA50UwsXMlltEcWDlxFSjrvg"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">EURO • 2020</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">UEFA</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-6 flex-1">Italy vs England - Final Thriller</h3>
+<button class="flex items-center text-primary font-label-sm text-label-sm uppercase tracking-widest hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined mr-2">play_arrow</span> Watch Highlights
+                    </button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/30 hover:border-primary/50 transition-all duration-300 group flex flex-col">
+<div class="relative w-full aspect-video bg-surface-dim">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="An intense close-up of a key player celebrating a goal during a Nations League match. The aesthetic is dark and cinematic, with a luxury sports vibe. The background is a deeply shadowed, out-of-focus crowd, allowing the player's expression and the sharp lighting to command attention. Occasional gold lens flares add a premium touch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0cgN-58vOmVg-7HRSFFezrwe5olvppPcaPwVDOEN8h4EbpURza8d8cJObwG1NrH5MMm_sVhN8LJxgg6Y8OeUMafzbBxkfLkq3uU7gUR9r2-ZNnUV2v1617j8-Pys9pmlfSmm19A1yObaKfsOLR79YBTiWD2HZv4bSR3dZTe0vtJkXGZkMbY3Z2WlwqobsRKfPXRncD8A1g-z0rTQ8t6yA1-rbx9b5TRC46E5r5B7kbBlOHThtncOJPg"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Nations League • 2023</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">UEFA</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-6 flex-1">Spain vs Croatia - Tactical Masterclass</h3>
+<button class="flex items-center text-primary font-label-sm text-label-sm uppercase tracking-widest hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined mr-2">play_arrow</span> Watch Highlights
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/20 w-full py-unit*6 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto gap-4">
+<div class="font-title-md text-title-md text-on-surface">GLOBAL XI</div>
+<div class="font-body-md text-body-md text-primary">© 2024 Global XI Intelligence. An NLP-driven research initiative.</div>
+<ul class="flex space-x-6 font-label-sm text-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Academic Documentation</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Methodology</a></li>
+</ul>
+</div>
+</footer>
+</body></html>

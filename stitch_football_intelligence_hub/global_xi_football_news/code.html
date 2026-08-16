@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>International Football News - Global XI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#e9c400",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary": "#3c2f00",
+                        "surface-tint": "#e9c349",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#221b00",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "outline-variant": "#4d4635",
+                        "tertiary-container": "#b2b3b3",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffe088",
+                        "secondary": "#fff9ef",
+                        "secondary-fixed": "#ffe16d",
+                        "primary-container": "#d4af37",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "secondary-container": "#ffdb3c",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "inverse-primary": "#735c00",
+                        "primary": "#f2ca50",
+                        "surface-variant": "#353534",
+                        "tertiary": "#cecece",
+                        "on-tertiary": "#2f3131",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface": "#131313",
+                        "outline": "#99907c",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-tertiary-container": "#434546",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#554300",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#725f00",
+                        "on-secondary": "#3a3000",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#241a00",
+                        "primary-fixed-dim": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+        }
+        .card-border {
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        .card-border:hover {
+            border-color: rgba(212, 175, 55, 1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface sticky top-0 w-full z-50 border-b border-outline-variant/30 bg-surface/90 backdrop-blur-xl">
+<div class="flex justify-between items-center h-20 px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-display-lg text-primary dark:text-primary uppercase tracking-tighter">
+                GLOBAL XI
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Football AI</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Predictions</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Highlights</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-title-md text-title-md" href="#">News</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface hover:text-primary transition-colors cursor-pointer text-[28px]" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Header Section -->
+<section class="mb-16">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">
+                International Football News
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                The latest stories, tournament updates and developments from the international game.
+            </p>
+</section>
+<!-- News Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Article Card 1 -->
+<article class="bg-surface-container-low rounded-lg overflow-hidden flex flex-col card-border group">
+<div class="relative h-64 w-full overflow-hidden">
+<img class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500" data-alt="A dramatic wide-angle shot of a glowing, futuristic football stadium at night, packed with cheering fans under dramatic floodlights. The scene represents a high-stakes international match. The color palette is dark and moody, accented with intense bright white stadium lights and subtle golden hues reflecting off the pitch, embodying a premium, luxury sports aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC55_kxwq76xEukb-6YW8XMH4eQZZo-nfUGROwL4yEHyY8_PKjU7GhVN6l6e-ehY46JVD_ItyPeEKvQciv-rVyuA3K-6eUtlcqDXugTNYv4qB1d7TYqFKPL2DN11YQPQFW3zq6NdWg5OcoNdcFwTT3fFT-wiPGaN68dM9ogNnnijCwILaHUp36ssGWJdAMAp9UMdQJyR3QylDgSHJ5wylXlkbLP6fsvV0mnPhyQvQUzKWOC0oj0YYPqIA"/>
+<div class="absolute top-4 left-4 bg-primary-container text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest border border-primary font-bold shadow-md">
+                        WORLD CUP
+                    </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h2 class="font-title-md text-title-md text-on-surface mb-3 group-hover:text-primary transition-colors">
+                        Preparations Continue for the Next Generation of International Football
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        Key infrastructure projects and tactical shifts are dominating the agenda as nations gear up for the expanded tournament format.
+                    </p>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Source: FIFA</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70">16 Aug 2026</span>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary-fixed transition-colors font-label-sm text-label-sm uppercase tracking-wider group/btn">
+                            Read Original
+                            <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="bg-surface-container-low rounded-lg overflow-hidden flex flex-col card-border group">
+<div class="relative h-64 w-full overflow-hidden">
+<img class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a football tactical board with magnetic pieces, illuminated by a spotlight in a darkened, luxurious coaching suite. The focus is sharp on a cluster of gold and white pieces. The mood is analytical and strategic, employing deep blacks, soft greys, and metallic gold accents to convey elite football intelligence and high-performance analysis." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsU-WX9fG1cvF0wIZjzptdimluMETMbVfex5Szws6LuA4i7hazGQ1G1eyCNsVgtMU3a0tI2CtuTltsycehFS_hk2_AwaE_cAArR65drzp7UMv6BVwL7XRsD-Rgk3Z4Ck64VnA-lIdzoVM1azmo1Ipy9J1RiIl7npFLyEN9Zajdv_VNRXrGg1vrwBtc7xhhxYLfbDDvMeLlnmFbjuw59fzFkHeorlrQ5IVg5YujJtbegPh9urdtbMbPoQ"/>
+<div class="absolute top-4 left-4 bg-surface-container-high text-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest border border-primary/30 backdrop-blur-md">
+                        UEFA
+                    </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h2 class="font-title-md text-title-md text-on-surface mb-3 group-hover:text-primary transition-colors">
+                        European Nations League Dynamics Shift
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        Emerging tactical trends suggest a departure from traditional possession-based models in top-tier European competition.
+                    </p>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Source: UEFA Media</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70">15 Aug 2026</span>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary-fixed transition-colors font-label-sm text-label-sm uppercase tracking-wider group/btn">
+                            Read Original
+                            <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="bg-surface-container-low rounded-lg overflow-hidden flex flex-col card-border group">
+<div class="relative h-64 w-full overflow-hidden">
+<img class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500" data-alt="A stylized, high-contrast photograph of a golden football trophy resting on a sleek black marble pedestal. The lighting is dramatic, casting sharp shadows and highlighting the metallic texture of the gold. The background is an abstract, dark void, creating a sense of luxury, exclusivity, and ultimate achievement in global sports." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp820uAA897kNh2yx5N7hQcP3MsLKbJl_GTp85TquTa4Y1FB6iTSJvP6ow8e8OnPB1fKrDLXrhxWgJl8JX7d9PvrHe2z70nWv7Qah7A5TahArJ8ozv3Xn3QooZE_aBK5_G5qMHB9xv7AdHawpJES5q7qAdUM1YoS7S6BbOzBIlhgC3S_NBFDHOZsXYgN4ZXtRDnAeynCmx_9u4DQlN041Dd3farx4grl3geKZ9-QTxfEtfG8nXpQTTYg"/>
+<div class="absolute top-4 left-4 bg-surface-container-high text-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest border border-primary/30 backdrop-blur-md">
+                        CONMEBOL
+                    </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h2 class="font-title-md text-title-md text-on-surface mb-3 group-hover:text-primary transition-colors">
+                        South American Qualifiers: The Road to Glory
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        As the qualifying rounds intensify, traditional powerhouses face unprecedented challenges from rising continental stars.
+                    </p>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Source: CONMEBOL</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70">14 Aug 2026</span>
+</div>
+<button class="flex items-center gap-2 text-primary hover:text-primary-fixed transition-colors font-label-sm text-label-sm uppercase tracking-wider group/btn">
+                            Read Original
+                            <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full py-unit*6 border-t border-outline-variant/20 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto gap-4">
+<div class="font-title-md text-title-md text-on-surface">
+                GLOBAL XI
+            </div>
+<div class="flex gap-6 items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Academic Documentation</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Methodology</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm">
+                © 2024 Global XI Intelligence. An NLP-driven research initiative.
+            </div>
+</div>
+</footer>
+</body></html>
