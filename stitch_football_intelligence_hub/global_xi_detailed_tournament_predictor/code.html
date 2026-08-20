@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>World Cup 2026 Predictor - Global XI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#d4af37",
+                    "error": "#ffb4ab",
+                    "error-container": "#93000a",
+                    "surface-container": "#201f1f",
+                    "inverse-surface": "#e5e2e1",
+                    "on-secondary-fixed": "#221b00",
+                    "on-primary-fixed": "#241a00",
+                    "surface-container-lowest": "#0e0e0e",
+                    "inverse-primary": "#735c00",
+                    "primary-fixed": "#ffe088",
+                    "secondary-fixed": "#ffe16d",
+                    "on-tertiary-container": "#434546",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-fixed-variant": "#544600",
+                    "surface-dim": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#cecece",
+                    "on-background": "#e5e2e1",
+                    "on-secondary": "#3a3000",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "surface": "#131313",
+                    "secondary": "#fff9ef",
+                    "on-tertiary": "#2f3131",
+                    "on-primary-fixed-variant": "#574500",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-container": "#554300",
+                    "surface-container-highest": "#353534",
+                    "on-error": "#690005",
+                    "on-secondary-container": "#725f00",
+                    "on-primary": "#3c2f00",
+                    "inverse-on-surface": "#313030",
+                    "primary": "#f2ca50",
+                    "tertiary-fixed": "#e2e2e2",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "primary-fixed-dim": "#e9c349",
+                    "secondary-fixed-dim": "#e9c400",
+                    "tertiary-container": "#b2b3b3",
+                    "on-surface-variant": "#d0c5af",
+                    "surface-tint": "#e9c349",
+                    "outline-variant": "#4d4635",
+                    "outline": "#99907c",
+                    "surface-variant": "#353534",
+                    "on-surface": "#e5e2e1",
+                    "background": "#131313",
+                    "secondary-container": "#ffdb3c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "container-max": "1440px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-sm": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-lg-mobile": [
+                            "Montserrat"
+                    ],
+                    "headline-lg": [
+                            "Montserrat"
+                    ],
+                    "title-md": [
+                            "Montserrat"
+                    ],
+                    "display-lg": [
+                            "Montserrat"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .bracket-line {
+            position: absolute;
+            border: 1px solid theme('colors.outline-variant');
+            z-index: 0;
+        }
+        .bracket-line.active {
+            border-color: theme('colors.primary-container');
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+        .node-card {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Custom Scrollbar for bracket container */
+        .bracket-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .bracket-container::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low');
+            border-radius: 4px;
+        }
+        .bracket-container::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 4px;
+        }
+        .bracket-container::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.primary-container');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 flex justify-between items-center w-full px-margin-desktop py-4 bg-surface/90 backdrop-blur-xl border-b border-outline-variant shadow-sm transition-all">
+<div class="flex items-center gap-8">
+<a class="text-title-md font-headline-lg font-bold tracking-tight text-primary dark:text-primary" href="#">
+                GLOBAL XI
+            </a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Football AI</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Predictions</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Highlights</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">News</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Search" class="text-on-surface-variant hover:text-primary transition-colors duration-200 scale-95 active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+<button aria-label="Account" class="text-on-surface-variant hover:text-primary transition-colors duration-200 scale-95 active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 gap-12">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-outline-variant/30 pb-6">
+<div>
+<p class="font-label-sm text-label-sm text-primary mb-2 uppercase tracking-widest">Tournament Intelligence</p>
+<h1 class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">World Cup 2026 Predictor</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">Simulate the global stage. Select group winners and map out your path to the ultimate championship.</p>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 rounded-DEFAULT border border-primary text-primary font-label-sm text-label-sm uppercase tracking-wider hover:bg-primary/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">restart_alt</span>
+                    Reset Bracket
+                </button>
+<button class="flex-1 md:flex-none px-6 py-3 rounded-DEFAULT bg-primary-container text-on-primary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">save</span>
+                    Save Progress
+                </button>
+</div>
+</header>
+<!-- Group Stage Selection -->
+<section class="flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h2 class="font-title-md text-title-md font-bold text-on-surface flex items-center gap-2">
+<span class="w-2 h-6 bg-primary-container inline-block rounded-sm"></span>
+                    Group Stage Selection
+                </h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Select 1st &amp; 2nd</p>
+</div>
+<!-- Group Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Group A -->
+<div class="bg-surface-container-low border border-outline-variant/50 rounded-lg p-5 hover:border-primary/30 transition-colors">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-4 flex justify-between">
+                        Group A <span class="text-primary-container">0/2 Selected</span>
+</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="USA Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the United States flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDIpc-f7OCt5gRh8jlZKwD8VlaSq6JjxL_raqQgplCY4AbF0CVP--wrbB-L0hO8hed7F0MVRt9sv1no3KvglE0EbaJcL_1fDWv6pczuXnzYfMpAuHnpKuBJK25jPMdQE2L38offy63K7PfU74MrNrz3O9XPHfPhdBOC2vKapyyq_FmZerCN6QyWJvQPQaikEIKulEOC2xELE8yRwTMxMbbnuubq0FARQLGZXu3bIpOYffpAs02c4kQUQ"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">United States</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_1" title="1st Place" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_2" title="2nd Place" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Mexico Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Mexico flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3Nbjzb2dRIq-1Njde9mMdvBvdrxhhuTipovVRMkfzrDrFNS6JLHV8_vMUFmTb0ePdWfxNbQeYW0rlDEEF1L0cbRGVV3ubO7d23HreyTkoDxS1TS9ZzcM2_TXEUMRT92Ayp9eiV-BUOYoK0gXuKi2_vNXfd0h9YPlwbe6eQX_IH1snOQNq_jgkT2jhJReEbzpyfltXiPupurM7tFB7_c5GsfpiwYeTphLylq38iprz3yxzpjSRjkJAjA"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Mexico</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_1" title="1st Place" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_2" title="2nd Place" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="South Korea Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the South Korea flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQnuwRNGBGFhWXXwYRr-1AC8TDQG8Eg6VN4GA2NsK_viLy8n1ejUUX56tz6iD3Ws9hrjIoAbVJLdfYbU5m8oeHZkoOVnc52iXXDfJbFpzZL5_kVb7SRaBxRiaaTYL0mHYoONBziG9wfRg1VMSxOAYQR8DwUz5P6iao-fvduAEzyR_bsIqQoi0YuV1zPjXBBxLTIqW1Akopn0QCKpw3KR7v0hMHoSzL2NLbkumLO3TCDjLAjnOJ5Nr9Zw"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">South Korea</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_1" title="1st Place" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_2" title="2nd Place" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Czech Republic Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Czech Republic flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSWaAxDYC_zHaKCoQLDzxL588gyblwPemvTmsDm1kjJOrsoOi4cgMXWXMWRxy58aP8TK8S6hUVLhglMjcKDxjAd5NIwP7e87aLvsDqsmCi06ghLJcrd2ZnFoGUf2AeEqnxsHW01pqyuyp8LXW8T25BG87Ebr0ZQSgBSSCNp_L7V21wgSQ5hi9BtT1Fy4skbFRFaHPAQ0cINaCCovbLvn3c7grrYXilj5ny-4KwMDJfMPCeqeoLjIjLbA"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Czech Republic</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_1" title="1st Place" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpA_2" title="2nd Place" type="radio"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Group B -->
+<div class="bg-surface-container-low border border-outline-variant/50 rounded-lg p-5 hover:border-primary/30 transition-colors">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-4 flex justify-between">
+                        Group B <span class="text-primary-container">0/2 Selected</span>
+</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Canada Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Canada flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFQRLpARxlc7Mom7P364k9j0zbG8wzMpz8jKUdF8OXpBW4KUJPleJbXx3GmDgMUDPQTShseNjnYUnvH98YKgAJnrWa6ldK-eO3Le3BFEoQH_S_pDvp0cd1y1kwqDtbjineKH9rJqoFGjZzDKviwD8941OWc1anE8M541EEuqD8lx_axT8X6MoclJXc4PmiujonhjeLgNWpB9WI6FW_r0FxqikaWwllloJ-0gUXztX-M0DBHdXryLhNqQ"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Canada</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Bosnia Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Bosnia and Herzegovina flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2R8EIQoBwZQoLIf5KFIabHfcbhNW2vkCj1KHM2KTaLo9DrTm2Jh73DeYjBEVbAPaMGvV5Rt_qf8BND28JgK4Bpo5MPnI7UIQWshUPMYBiPgt3NVatxd80TJaLeQ411z4SyfYsmeIwLQylaVntxxvuhm6RGwKU10uOwF5mbiHHi9BseztiIGsqJ4hYAH5_wgzfdCV_gaiYOq23-zcYtaoeQWVVlyw3z45jlwfn6RoqShL2dZxisPIVOw"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors truncate max-w-[120px]">Bosnia &amp; Herz.</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Qatar Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Qatar flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi1Vz22eg3hVScCXYBxYS6qk4OPVpJesDTmc9K-JP58CB1vChHrJhM3u1gud4wv7YuLhB587hGjKupu-DnFVipcp8GhGZMKUkzAVZnzLo6Tz762Fcm9w4hrl_ORK2aZdTLuk6lgzXJ9q-59kOhTbQy1aSmiS-rNS0QCcsbuj1zTW6LTmAbCo9c5zaUeelXgZY4YTrYozMvenIzn4K1AD9inmIbzZ3Ybsr3soQAkt-Ot5HA4WSEAFsEtw"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Qatar</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Switzerland Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Switzerland flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpYPU7xTVwcKot2cdfcz6Tf8qAy9PWQ-4FIbWzZfZj9DgRyM_4h694F3DwVuuaS0DN7w-dBa_P1JrKW-Z2GvtUVvDGmO1Yl-dYepoIqEh8t4EmriiPu1_m7SsMgWLoZfKitJbIY9vM5usto39MvAlBWBk3hv_-RezgO2KHWhyK20Imf63ntD-P_h-10Q89zBJmrtVWZsFlEqniI74Ty9oF64RbZP7p06o2uPy2qftrRHLLQztuCat8Eg"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Switzerland</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpB_2" type="radio"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Group C (Active State Example) -->
+<div class="bg-surface-container-low border border-primary/40 shadow-[0_0_15px_rgba(212,175,55,0.05)] rounded-lg p-5 transition-colors">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-4 flex justify-between">
+                        Group C <span class="text-primary-container font-bold">2/2 Selected</span>
+</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-primary text-primary shadow-[inset_0_0_10px_rgba(212,175,55,0.1)] cursor-pointer transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Brazil Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Brazil flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA417GsGdR2K0WIyN3fwPwge3l0bVVWXADFECNXe0AUuhDignXJR5rplQixlYYErMqY2P5s9VUbXp7JJg3Bd0DFPuFS8CTC_u33fEI4jAUvjDegtnzNdytA5TpnJrz5KlBgXb6Ts5OTOd_SFsUsSemaHaI-zqS8Vy4hqBVbmw-_sgKh8EWJpHmDMnPFLlihU2dWs4pmVCzM53momr9xxLreVecaGcP9pFt6gMmTn5S5HVOUU74OxFj7TQ"/>
+<span class="font-body-md text-body-md font-semibold">Brazil</span>
+</div>
+<div class="flex gap-2 items-center">
+<span class="font-label-sm text-label-sm text-primary-container mr-1">1ST</span>
+<input checked="" class="form-radio text-primary-container border-primary focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpC_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer opacity-50" name="grpC_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Morocco Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Morocco flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsfTax3QGyFKjQ5BH5EoJpSllmGy1HRlfRL6f1JBuzK1PjwSBwbVtLIRCsWuqotD71AAHTk6dWZG4ZYcKRgqsQJuU3k81CPecI5973_4pbqzf2LTezJPhvN5tyEWJ5dLu2I6bd1YzykK9Z15_xBZQwh0V4nqGeJD-aqRToveWz4R3aoyXrE-XmfjMnm2Ex0DT8ndbGgocgDSTu5nIds_Xz57SeN-S7tcKW25BjZ5ejVQy9fVC3scaH1g"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Morocco</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpC_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpC_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-tertiary-container/50 cursor-pointer transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Haiti Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Haiti flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsLTqnaHo33OudJ_0GjXFgwTgVH_7LCxVrjVQDC3omhn3wXu3CpmB_31O4K5v7SeMMtPt_ulosCIbRvA7LUjqOoMw_5Y2hypvGAFukwCSyic43GuKwh93qsTlNzZvUNfBgGWmuyUXbgxJQ17K72TWv7b_Z9_3A388NlBZ17k0SDRZYdYTsmkKXtW1pdHLW0m-aXHqHyVQheiVU5MFw8XhF4KmKUInAOc2YWR8mSzecgPpA_LBSRqaNdg"/>
+<span class="font-body-md text-body-md text-tertiary-container">Haiti</span>
+</div>
+<div class="flex gap-2 items-center">
+<span class="font-label-sm text-label-sm text-tertiary-container mr-1">2ND</span>
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer opacity-50" name="grpC_1" type="radio"/>
+<input checked="" class="form-radio text-tertiary-container border-tertiary-container focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpC_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Scotland Flag" class="w-6 h-auto rounded-sm object-cover border border-outline-variant/30" data-alt="Small detailed illustration of the Scotland flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnklAt5Q-x7n5HrEZRAy5nFTy0uanwr0Z9HCHggV4ok4U_KNTentuN9K_WMIP2GbW3hpFOrghTjitvJFXxdL0wq4NRJk9OTeQtGnUMjMkxZkc1ojiFPHAKXU46MjbhSyZHAOt4-Zcl0doG26-RhTz7Ma6689uCGlkNPreHYeinM-M_tii-IYeS-_aRzg9q_Tf34Ww1ZO7-nIF8S79zVsQEMbAn_Ha66-GCBxIHLnM_Lui0ayOadbmkSQ"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Scotland</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpC_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpC_2" type="radio"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Group D -->
+<div class="bg-surface-container-low border border-outline-variant/50 rounded-lg p-5 hover:border-primary/30 transition-colors">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-4 flex justify-between">
+                        Group D <span class="text-primary-container">0/2 Selected</span>
+</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="France Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the France flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDuySNeMyV7RaxPvx1aZs_W241gE3d6oyQb66huvgXITRZ0Y6hWsI68EZKSNIs7QtoRqMR1Rs0C9Fih_cyZ-8ugeXNGaMT9j8I9HKwq1BRx0xNJyYkmBmLiLppUEw5yzEJI4SjbbHqvvORH8jj_rGrIwPgVF2t_fsVN9PJ8uQ43GSUoTRSmPcGAKl-g740O6Wad4Hxvqx8YT1x5f2c79ql2AtXXd-UTDPJWgKmTfFxMs9mPKICX3dC0w"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">France</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Senegal Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Senegal flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM7OAep4QXMV-LtTjQK8sfzQCWm82ZrY-vxhsAVlB67vsdU1owH1G6C0AXr6nRb0H94hZBfnD7IQvow_5Zz2cumZhT1vdVldl49My07cFmOR1_Rl30exB23xTfeH1L_hgcbINuODbsnG18v6sJxT_8acWqLl1OzML8orPItUEUqnPlIJKNKElDb3ang4Dtj6jYj45BNwO7tchnvrGNsMoJGrmgHJBN_kGuy5S15Sbp5ZkWEtBR-YYkZg"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Senegal</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Iraq Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Iraq flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvNRDOp2P5sKHya8bWjp2kL6hXHnFDprIpPfLIFir_gsddU4K_I652T2quoGbU1bGAn6SG772Bp4mR_BGDixYqN_qS4KJgiObIm1JMOC0GOkILJJKHxaCuXDZf0Bh87Li6IziZesTd8kxzAVtSRvouh0LjJP5W_KxDFTaBJf0zjPcvfdDkbaaB0E6qReiAC5ezMRKBZK9ldfM33Dxpk8pqhVTmhraD8sRWJO2ClUZSS4vMWPlyW0oiog"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Iraq</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_2" type="radio"/>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface border border-outline-variant/30 cursor-pointer hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3">
+<img alt="Norway Flag" class="w-6 h-auto rounded-sm object-cover" data-alt="Small detailed illustration of the Norway flag, crisp colors, centered in a small frame, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyusMeqBJ53de-qqZ6Xxy4qX3M5qOcITaZ7Ph30kIFOhKhbLAOw5GtttlchSdMzKWS1sOlR9zNmMHdTQPqJpO-gRph4Cpb325Y0ah62HlUxynsQzzVqYye0eio2ZwX7MHGKO9pf5qPIfoSiz78RxeRKVC7BvL_-uRQwuV-0FB8D7DhsHXw7LS7CXy5cHR5OJZvTFvrcMkAdVhk4EWPGrwyLxA4ww1kcHoHs7T3FmtkmMVfuL58gwgbZA"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Norway</span>
+</div>
+<div class="flex gap-2">
+<input class="form-radio text-primary-container border-outline-variant focus:ring-primary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_1" type="radio"/>
+<input class="form-radio text-tertiary-container border-outline-variant focus:ring-tertiary-container focus:ring-offset-surface bg-surface w-4 h-4 cursor-pointer" name="grpD_2" type="radio"/>
+</div>
+</label>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-2">
+<button class="px-4 py-2 border border-outline-variant rounded-full text-label-sm font-label-sm text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center gap-2">
+                    View All Groups <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Knockout Bracket Section -->
+<section class="flex flex-col gap-6 mt-8">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-4">
+<h2 class="font-title-md text-title-md font-bold text-on-surface flex items-center gap-2">
+<span class="w-2 h-6 bg-primary-container inline-block rounded-sm"></span>
+                    Knockout Bracket
+                </h2>
+<div class="flex gap-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Selected
+                    </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-surface-container-high border border-outline-variant"></span> Pending
+                    </span>
+</div>
+</div>
+<!-- Horizontal Bracket Container -->
+<div class="w-full overflow-x-auto pb-8 bracket-container relative" style="min-height: 600px;">
+<div class="min-w-[1000px] flex justify-between h-full relative pt-10">
+<!-- Round Labels -->
+<div class="absolute top-0 left-0 w-full flex justify-between px-4 z-20">
+<div class="w-[200px] text-center font-label-sm text-label-sm text-primary uppercase tracking-widest border-b border-primary/30 pb-2">Round of 32</div>
+<div class="w-[200px] text-center font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/30 pb-2">Round of 16</div>
+<div class="w-[200px] text-center font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/30 pb-2">Quarter Finals</div>
+<div class="w-[200px] text-center font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/30 pb-2">Semi Finals</div>
+<div class="w-[200px] text-center font-label-sm text-label-sm text-primary-container font-bold uppercase tracking-widest border-b border-primary-container/50 pb-2">Final</div>
+</div>
+<!-- Column 1: R32 -->
+<div class="flex flex-col justify-around w-[200px] gap-4 z-10 relative">
+<!-- Match 1 -->
+<div class="node-card bg-surface-container border border-outline-variant/50 rounded overflow-hidden flex flex-col shadow-sm">
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer border-b border-outline-variant/30 transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m1" type="radio"/>
+<img alt="Ivory Coast" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the Ivory Coast flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS-kUQzvOTrtHlcXNKvr9hbZCloIeuC9X10Vmlql3tKDXbt12hL4BZSs7nLHihwmPkUx39pqb57rHcfzkUlc4lPkLt5Qo-0xfDZNx-hOHTZEUMArpnREvTIrrlGtmk0zVjMFpV6bB1GjYUxF3cq01WlkJMgWBYwKFK-F2PvenHOuyuQk3KqtiL-1BqLmVRagBpCdhzkrtNt1s29690a41fHeyCVbp3O7K1GRHATHka1sC5Cee06ys2sA"/>
+<span class="font-label-sm text-label-sm">Ivory Coast</span>
+</label>
+<label class="flex items-center gap-3 p-2 bg-surface-container-high border-l-2 border-primary-container cursor-pointer transition-colors">
+<input checked="" class="form-radio text-primary-container bg-transparent border-primary-container w-3 h-3" name="m1" type="radio"/>
+<img alt="Brazil" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the Brazil flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgc9FrpIXuyW3dDH4_BnC08jB-wYj5rjvFSTzhPvJbog4lXEcdBb3Dwp66baGmefbopAIroN6UXKFqkU8iGo7eJl-3EedrkxxJrAyDYc0Wz18pYP2OhKnY8aoU4zXEf92_p3_tnv-MLyvG8xHlliGGt7aiI-7WFvlYEuzRtSBxZd_4unAhiwMv6KPdkTYUZDaZp4JVZV3T--IosgquVMHtDclQOjHfhMkzVYmzrqcEEdOpjxCQhttAKQ"/>
+<span class="font-label-sm text-label-sm font-bold text-primary">Brazil</span>
+</label>
+</div>
+<!-- Connector to C2 -->
+<div class="bracket-line active" style="top: 15%; right: -25px; width: 25px; height: 1px;"></div>
+<div class="bracket-line" style="top: 15%; right: -25px; width: 1px; height: 120px;"></div>
+<!-- Match 2 -->
+<div class="node-card bg-surface-container border border-outline-variant/50 rounded overflow-hidden flex flex-col shadow-sm mt-8">
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer border-b border-outline-variant/30 transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m2" type="radio"/>
+<img alt="France" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the France flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz8YXOgPBiAL4nKorcFixVdzuHFu8UPHyDkPQIZ-OCZOO89MGONx3I1szhtpQukFCkTAgkYCaaXYBvhK8AEnMMRvRpNN0VBl3UpUyFAbbW92QP5wc0BDnf4bOI9cA8O1cBqaYwvI4vWcp__XxpPKKzj4EmWSDIb_FFpWez1F1ePKIsC2rvvfd3hz86QIiLGsVH4J2x9gahOoCU0R3mXIjAQVrFahaSQu8wwipSkZrR5iuCgsxH9DIqzA"/>
+<span class="font-label-sm text-label-sm">France</span>
+</label>
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m2" type="radio"/>
+<img alt="Sweden" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the Sweden flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7HCGPFvq30oY4k0n2jKgRs2LEmpoU20RgnDcMt9Fw_RkvUv7hemsf1PNKAtvKJMG9MYqghHctzV9mMozuNHXO5oP5NhfUHj21d8P3PV547OFSuTJYzyVA8xOs0i62viV0cQq40TpTqPdTuD0RuoETq75NAeyPKUUs75fn-SYWLbaJsc4NTCkn160wMXBzmDDao0AOBMWuFJ0e07zbxbYUP4-HIhkGOuUBt9DhuznHdleNLDE_OUbbUg"/>
+<span class="font-label-sm text-label-sm">Sweden</span>
+</label>
+</div>
+<!-- Connector to C2 -->
+<div class="bracket-line" style="top: 35%; right: -25px; width: 25px; height: 1px;"></div>
+<!-- Middle connector to C2 node -->
+<div class="bracket-line" style="top: 25%; right: -25px; width: 25px; height: 1px;"></div>
+<!-- Match 3 -->
+<div class="node-card bg-surface-container border border-outline-variant/50 rounded overflow-hidden flex flex-col shadow-sm mt-12">
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer border-b border-outline-variant/30 transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m3" type="radio"/>
+<img alt="South Korea" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the South Korea flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqTlhC4dye4QlV7dSIT0ekagj60ceD9Lu62_8F2SX3Fw_HPxsIDDtF31VmMU4D9NqvZHSptva_mgJMPIgnmf8FXoDzk5KjMJyhd2Jkjtyajq1hc32RfuCJzTVVqT9xLrgPBz8GBPI17Ow0IG0Z2r-ShcijBZMMS9g9-EVFSwiJLqsLfluluwBvJjKUB3xsopn6SrUEyZS8DuLWLSSuIlPgJFrrZP1Xnen6ggwAuvAXAnlel1SMpiQ_yQ"/>
+<span class="font-label-sm text-label-sm">South Korea</span>
+</label>
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m3" type="radio"/>
+<img alt="Bosnia" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the Bosnia flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsty3VMrgiBBvJUbnjR8p9eSgkcluhxCO42W5LBRqc7F8chrLOCU2ZnsEAiqLW-sPPrHr-eLGeag1uC3UIRXJHIJzRWsENxRwKaAbce-kEVgu8hLiqQE4-cSTuW7nR2uW8EJl6Je6BGB92L9mLICLHOfwy2Hlyhr-xon5g20rCpGgT_w1H4c6v6IiSIyhekAKQGDifyKhkfOZlnLrcw1NZvc2wDzY4BePa6ShNAAyehAdKvtP9MiI24w"/>
+<span class="font-label-sm text-label-sm truncate">Bosnia &amp; Herz.</span>
+</label>
+</div>
+<!-- Connector to C2 -->
+<div class="bracket-line" style="top: 65%; right: -25px; width: 25px; height: 1px;"></div>
+<div class="bracket-line" style="top: 65%; right: -25px; width: 1px; height: 120px;"></div>
+<!-- Match 4 -->
+<div class="node-card bg-surface-container border border-outline-variant/50 rounded overflow-hidden flex flex-col shadow-sm mt-8">
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer border-b border-outline-variant/30 transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m4" type="radio"/>
+<img alt="Netherlands" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the Netherlands flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1mf75caANT4EvpPRpC9yuYFJXMimRqbW9dDz9tMnQOyLbEf2WeS6tNGtWNk-EKgJYh2i-8LHp8y_gNvX1RTFZsJU5w6ueAVM0QbW6LRoBLOLSS2Ywte9oJMLfJ6iPhLMPcHGx2DmSfAnhhqPMBKyEgjBde8Y1JGJ4MXwTbTtvpgQj4lVKu45SZ4cQ9AjX9qSxEMdPoVWZI1ASfW7Y2t2nDhzdim5nmcF0A0PphHTI8LA5VQQHRClS6A"/>
+<span class="font-label-sm text-label-sm">Netherlands</span>
+</label>
+<label class="flex items-center gap-3 p-2 bg-surface-container hover:bg-surface-container-high cursor-pointer transition-colors">
+<input class="form-radio text-primary-container bg-transparent border-outline-variant w-3 h-3" name="m4" type="radio"/>
+<img alt="Morocco" class="w-5 h-auto rounded-sm" data-alt="Small detailed illustration of the Morocco flag, crisp colors, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHqcrUHQSJTXs4IEZVW1HzWD7Z4N8m8jPQSs7xQRzK5_TfsiroGQfYwAAcxCYjLsjzQ9qx7KYLnnk2NdS6BgV6OZ6ERn6U3DpHWawt-QnIzVu9HDutRnU8DwpKNc2DkhlD9YlDjK_BASVnSuktCMI1sV5xtydTLH9HWimQWV7OTasbzR3RCnZ7zJBfHRWYK1-qvcBlDQ1VIyzpdl0MrfV4cd8sQAf4fpBVYu-WWUdUXlOd7Gmo1-l5wg"/>
+<span class="font-label-sm text-label-sm">Morocco</span>
+</label>
+</div>
+<!-- Connector to C2 -->
+<div class="bracket-line" style="top: 85%; right: -25px; width: 25px; height: 1px;"></div>
+<!-- Middle connector to C2 node -->
+<div class="bracket-line" style="top: 75%; right: -25px; width: 25px; height: 1px;"></div>
+</div>
+<!-- Column 2: R16 -->
+<div class="flex flex-col justify-around w-[200px] z-10 relative py-12">
+<!-- Match 5 -->
+<div class="node-card bg-surface border border-outline-variant/30 rounded overflow-hidden flex flex-col shadow-sm opacity-80">
+<div class="flex items-center gap-3 p-2 bg-surface border-b border-outline-variant/30">
+<div class="w-3 h-3 rounded bg-surface-container-high border border-outline-variant"></div>
+<img alt="TBD" class="w-5 h-auto rounded-sm opacity-50 grayscale" data-alt="Small grey box indicating team to be determined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnAeucEiL8lrTc_ReY_ZLj8h6-pnBr32GxGoBknrF4CLMsZZqJZTdt3Qj1UD07PnPEsaTTFTJPVLYlVuLcXChiShKFnKY1HItRzbOsi6uOxoIcpLLiZhhT5kGh3GXHOoAD3urcS3KWfpWlEvYiS3g9iWfrb82W3Ms_pGnnTcynPclb_LPIayckjNqj3ZH9YwwVonsNVz2qPsAUEmUlsJXEZSJzJ8IT-ZtoVLLQK952_xO3TPOpltimCA"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Brazil</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-surface">
+<div class="w-3 h-3 rounded bg-surface-container-high border border-outline-variant"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container-high border border-outline-variant/50"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic">TBD</span>
+</div>
+</div>
+<!-- Connector to C3 -->
+<div class="bracket-line" style="top: 25%; right: -25px; width: 25px; height: 1px;"></div>
+<div class="bracket-line" style="top: 25%; right: -25px; width: 1px; height: 250px;"></div>
+<!-- Match 6 -->
+<div class="node-card bg-surface border border-outline-variant/30 rounded overflow-hidden flex flex-col shadow-sm opacity-80 mt-20">
+<div class="flex items-center gap-3 p-2 bg-surface border-b border-outline-variant/30">
+<div class="w-3 h-3 rounded bg-surface-container-high border border-outline-variant"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container-high border border-outline-variant/50"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic">TBD</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-surface">
+<div class="w-3 h-3 rounded bg-surface-container-high border border-outline-variant"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container-high border border-outline-variant/50"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic">TBD</span>
+</div>
+</div>
+<!-- Connector to C3 -->
+<div class="bracket-line" style="top: 75%; right: -25px; width: 25px; height: 1px;"></div>
+<!-- Middle connector to C3 node -->
+<div class="bracket-line" style="top: 50%; right: -25px; width: 25px; height: 1px;"></div>
+</div>
+<!-- Column 3: QF -->
+<div class="flex flex-col justify-around w-[200px] z-10 relative py-32">
+<!-- Match 7 -->
+<div class="node-card bg-surface-dim border border-outline-variant/20 rounded overflow-hidden flex flex-col shadow-sm opacity-60">
+<div class="flex items-center gap-3 p-2 border-b border-outline-variant/20">
+<div class="w-3 h-3 rounded bg-surface-container border border-outline-variant/50"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container border border-outline-variant/30"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/70 italic">TBD</span>
+</div>
+<div class="flex items-center gap-3 p-2">
+<div class="w-3 h-3 rounded bg-surface-container border border-outline-variant/50"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container border border-outline-variant/30"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/70 italic">TBD</span>
+</div>
+</div>
+<!-- Connector to C4 -->
+<div class="bracket-line" style="top: 50%; right: -25px; width: 25px; height: 1px;"></div>
+</div>
+<!-- Column 4: SF (Only half shown to fit layout) -->
+<div class="flex flex-col justify-center w-[200px] z-10 relative">
+<!-- Match 8 -->
+<div class="node-card bg-surface-dim border border-outline-variant/20 rounded overflow-hidden flex flex-col shadow-sm opacity-40">
+<div class="flex items-center gap-3 p-2 border-b border-outline-variant/20">
+<div class="w-3 h-3 rounded bg-surface-container border border-outline-variant/50"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container border border-outline-variant/30"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/50 italic">TBD</span>
+</div>
+<div class="flex items-center gap-3 p-2">
+<div class="w-3 h-3 rounded bg-surface-container border border-outline-variant/50"></div>
+<div class="w-5 h-3 rounded-sm bg-surface-container border border-outline-variant/30"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/50 italic">TBD</span>
+</div>
+</div>
+<!-- Connector to Final -->
+<div class="bracket-line" style="top: 50%; right: -25px; width: 25px; height: 1px;"></div>
+<div class="bracket-line" style="top: 50%; right: -25px; width: 1px; height: 100px;"></div>
+</div>
+<!-- Column 5: Final -->
+<div class="flex flex-col justify-center w-[200px] z-10 relative items-center">
+<div class="mb-4">
+<span class="material-symbols-outlined text-[48px] text-primary-container/30" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div class="node-card bg-surface-dim border border-primary-container/30 rounded overflow-hidden flex flex-col shadow-[0_0_20px_rgba(212,175,55,0.05)] opacity-80 w-full text-center">
+<div class="p-4 bg-gradient-to-b from-surface to-surface-container flex flex-col items-center justify-center gap-2 min-h-[80px]">
+<span class="font-label-sm text-label-sm text-primary/50 uppercase tracking-widest">World Champion</span>
+<span class="font-body-md text-on-surface-variant italic">Awaiting Prediction</span>
+</div>
+</div>
+<div class="bracket-line" style="top: 50%; left: -25px; width: 25px; height: 1px;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Promo / Secondary CTA area -->
+<section class="mt-8 mb-12 bg-surface-container-high rounded-xl p-8 border border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/5 to-transparent z-0"></div>
+<div class="relative z-10 max-w-xl">
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-on-surface font-bold mb-2">Share Your Perfect Bracket</h3>
+<p class="font-body-md text-on-surface-variant">Lock in your predictions and challenge friends, analysts, and the Global XI community.</p>
+</div>
+<div class="relative z-10 flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 rounded bg-surface border border-outline-variant text-on-surface font-label-sm text-label-sm uppercase tracking-wider hover:bg-surface-bright transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">link</span>
+                    Copy Link
+                </button>
+<button class="flex-1 md:flex-none px-6 py-3 rounded bg-primary-container text-on-primary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider hover:bg-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">share</span>
+                    Publish
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-unit*8 px-margin-desktop mt-unit*10 flex flex-col md:flex-row justify-between items-center gap-unit*4 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30 flat no shadows opacity-80 hover:opacity-100 transition-opacity p-8">
+<div class="flex items-center gap-4">
+<span class="text-label-sm font-headline-lg text-primary">GLOBAL XI</span>
+<span class="text-body-md font-body-md text-tertiary dark:text-tertiary text-sm">
+                © 2024 Global XI International Football Intelligence Hub. A research project dedicated to advanced sports analytics.
+            </span>
+</div>
+<div class="flex gap-6">
+<a class="text-body-md font-body-md text-on-surface-variant hover:text-primary-fixed underline transition-all text-sm" href="#">Academic Research</a>
+<a class="text-body-md font-body-md text-on-surface-variant hover:text-primary-fixed underline transition-all text-sm" href="#">Disclaimers</a>
+<a class="text-body-md font-body-md text-on-surface-variant hover:text-primary-fixed underline transition-all text-sm" href="#">Data Methodology</a>
+<a class="text-body-md font-body-md text-on-surface-variant hover:text-primary-fixed underline transition-all text-sm" href="#">Privacy Policy</a>
+</div>
+</footer>
+</body></html>

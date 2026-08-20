@@ -1,0 +1,390 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Global XI - Tournament Predictor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#3a3000",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-variant": "#353534",
+                      "surface-container": "#201f1f",
+                      "on-tertiary": "#2f3131",
+                      "surface-container-highest": "#353534",
+                      "primary": "#f2ca50",
+                      "tertiary-fixed": "#e2e2e2",
+                      "secondary-container": "#ffdb3c",
+                      "on-surface": "#e5e2e1",
+                      "on-surface-variant": "#d0c5af",
+                      "primary-container": "#d4af37",
+                      "on-primary-container": "#554300",
+                      "surface-tint": "#e9c349",
+                      "on-tertiary-container": "#434546",
+                      "on-secondary-container": "#725f00",
+                      "on-primary": "#3c2f00",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "secondary-fixed-dim": "#e9c400",
+                      "on-secondary-fixed-variant": "#544600",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#313030",
+                      "inverse-surface": "#e5e2e1",
+                      "outline-variant": "#4d4635",
+                      "surface-bright": "#3a3939",
+                      "on-primary-fixed-variant": "#574500",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "primary-fixed-dim": "#e9c349",
+                      "surface": "#131313",
+                      "on-error": "#690005",
+                      "tertiary-container": "#b2b3b3",
+                      "on-primary-fixed": "#241a00",
+                      "inverse-primary": "#735c00",
+                      "tertiary": "#cecece",
+                      "on-background": "#e5e2e1",
+                      "error-container": "#93000a",
+                      "error": "#ffb4ab",
+                      "secondary": "#fff9ef",
+                      "outline": "#99907c",
+                      "background": "#131313",
+                      "secondary-fixed": "#ffe16d",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "primary-fixed": "#ffe088",
+                      "surface-dim": "#131313",
+                      "on-secondary-fixed": "#221b00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max": "1440px",
+                      "unit": "8px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "title-md": [
+                              "Montserrat"
+                      ],
+                      "label-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for horizontal brackets */
+        .bracket-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .bracket-scroll::-webkit-scrollbar-track {
+            background: #121212; 
+        }
+        .bracket-scroll::-webkit-scrollbar-thumb {
+            background: #4d4635; 
+            border-radius: 4px;
+        }
+        .bracket-scroll::-webkit-scrollbar-thumb:hover {
+            background: #d4af37; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 border-b border-outline-variant/30 bg-surface/90 backdrop-blur-xl">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<a class="font-display-lg text-headline-lg md:text-display-lg text-primary dark:text-primary uppercase tracking-tighter flex items-center gap-2" href="#">
+
+                GLOBAL XI
+            </a>
+<!-- Desktop Nav Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Football AI</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-title-md text-title-md hover:text-primary transition-all duration-300 transform scale-95" href="#">Predictions</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">Highlights</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-title-md text-title-md" href="#">News</a>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="md:hidden text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col gap-12">
+<!-- Header Section -->
+<header class="flex flex-col gap-4">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface mb-2">Tournament Predictor</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Simulate outcomes, build your brackets, and test your tactical foresight against the Global XI intelligence engine.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-high border border-outline-variant text-on-surface font-title-md text-title-md rounded-DEFAULT hover:border-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">history</span>
+                        History
+                    </button>
+<button class="px-6 py-3 bg-primary-container text-on-primary-container font-title-md text-title-md uppercase tracking-wider rounded-DEFAULT hover:bg-primary transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+<span class="material-symbols-outlined icon-fill">save</span>
+                        Save Progress
+                    </button>
+</div>
+</div>
+</header>
+<!-- Tournament Selection -->
+<section class="flex flex-col gap-6">
+<h2 class="font-title-md text-title-md text-on-surface border-b border-outline-variant/30 pb-2">Active Tournaments</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Selected Tournament Card -->
+<div class="relative bg-surface-container rounded-lg border border-primary overflow-hidden cursor-pointer group shadow-[0_0_20px_rgba(212,175,55,0.1)]">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent z-10 pointer-events-none"></div>
+<div class="bg-cover bg-center w-full h-48 opacity-50 group-hover:opacity-70 transition-opacity duration-500" data-alt="A luxury stylized graphic representing the World Cup 2026, featuring golden world cup silhouette over a dark, sleek geometric stadium background. High contrast, premium sports aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9xbqOM9BAYUCSNyLM4zyR-0laz5bMDLNkPr2ki-fKKOrX2q2Qi5GR5-oZj007OrzyvOa5nujrkwrKnqUB0FYkgvJFS1a6tIfEhM4Smeqa138n5svrHI276kf1iXcjIQQfSpBKNNVUmBDZ23hsLK02TqWDZp9pUWmwKFaVtK3LtSGT73IqXgzv1HKIikys1v9ldzwxnFdEDeZMnO6UiaccbpOc40luQY9mQYcUwrHxI5swjwwYX8ge1w')"></div>
+<div class="absolute inset-0 z-20 p-6 flex flex-col justify-end">
+<div class="flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-1 block">Active Selection</span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface">World Cup 2026</h3>
+</div>
+<div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Unselected Tournament Card -->
+<div class="relative bg-surface-container-low rounded-lg border border-outline-variant/50 hover:border-outline-variant overflow-hidden cursor-pointer group transition-colors">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent z-10 pointer-events-none"></div>
+<div class="bg-cover bg-center w-full h-48 opacity-30 group-hover:opacity-50 transition-opacity duration-500 grayscale" data-alt="A luxury stylized graphic representing EURO 2024, featuring a subtle European map outline and a golden football over a dark, sleek geometric background. High contrast, premium sports aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBFDneQcmEATp7sJXgUNzsC9Nab_gEfytFfrGO9Z2ECditdDg0y9BaSpLs0FbuWF1H33PN0JWuNOdUaocK2-PEvPsBc02RMyMQnyLzP7-obgYboeSepEBSbDuEbgjPnLNZCoy3iAkKZEB-7LHyQw-u6edJucQnh7--f9ieZV4oKjemLoYq0by97EnNYENyX0CqIjpPz-sxPAGLORWc2fcOnJUR8zROEWTV2qbYb6LMFBn2jmHsLPXuo6Q')"></div>
+<div class="absolute inset-0 z-20 p-6 flex flex-col justify-end">
+<div class="flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1 block">Upcoming</span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface">EURO 2024</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bracket View -->
+<section class="flex flex-col gap-6 flex-grow">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<h2 class="font-title-md text-title-md text-on-surface">Knockout Stage Bracket</h2>
+<div class="flex gap-2 bg-surface-container-low p-1 rounded-DEFAULT border border-outline-variant/30">
+<button class="px-4 py-1 text-on-surface-variant font-label-sm text-label-sm uppercase hover:text-primary">Round of 16</button>
+<button class="px-4 py-1 bg-surface-container border border-outline-variant text-primary font-label-sm text-label-sm uppercase rounded-DEFAULT shadow-[0_0_10px_rgba(212,175,55,0.05)]">Quarter-Finals</button>
+<button class="px-4 py-1 text-on-surface-variant font-label-sm text-label-sm uppercase hover:text-primary">Semi-Finals</button>
+<button class="px-4 py-1 text-on-surface-variant font-label-sm text-label-sm uppercase hover:text-primary">Final</button>
+</div>
+</div>
+<!-- Bracket Canvas (Horizontal Scroll) -->
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-8 overflow-x-auto bracket-scroll relative min-h-[600px]">
+<!-- Simple 2-column layout for Quarter-finals demo to show style -->
+<div class="flex justify-between min-w-[800px] gap-12 relative z-10 h-full">
+<!-- Left Column (Matchups) -->
+<div class="flex flex-col justify-around gap-12 w-80">
+<!-- Matchup 1 -->
+<div class="flex flex-col gap-2 relative">
+<!-- Match Header -->
+<div class="flex justify-between items-center px-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Match 57</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lusail Stadium</span>
+</div>
+<!-- Team 1 (Selected) -->
+<div class="bg-surface-container border border-primary rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer group shadow-[0_0_15px_rgba(212,175,55,0.1)] relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-DEFAULT"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="w-6 h-4 bg-white border border-outline/50 flex items-center justify-center text-[8px] text-black font-bold">FRA</div>
+<span class="font-title-md text-body-md text-on-surface">France</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<!-- Team 2 (Unselected) -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-6 h-4 bg-white border border-outline/50 flex items-center justify-center text-[8px] text-black font-bold">ENG</div>
+<span class="font-title-md text-body-md text-on-surface-variant">England</span>
+</div>
+</div>
+<!-- Connector Line extending right -->
+<div class="absolute right-[-24px] top-1/2 w-6 h-[1px] bg-primary/50"></div>
+<div class="absolute right-[-24px] top-1/2 w-[1px] h-[calc(50%+24px)] bg-primary/50"></div>
+</div>
+<!-- Matchup 2 -->
+<div class="flex flex-col gap-2 relative">
+<div class="flex justify-between items-center px-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Match 58</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Al Bayt</span>
+</div>
+<!-- Team 1 (Unselected) -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-6 h-4 bg-white border border-outline/50 flex items-center justify-center text-[8px] text-black font-bold">POR</div>
+<span class="font-title-md text-body-md text-on-surface-variant">Portugal</span>
+</div>
+</div>
+<!-- Team 2 (Selected) -->
+<div class="bg-surface-container border border-primary rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer group shadow-[0_0_15px_rgba(212,175,55,0.1)] relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-DEFAULT"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="w-6 h-4 bg-white border border-outline/50 flex items-center justify-center text-[8px] text-black font-bold">ESP</div>
+<span class="font-title-md text-body-md text-on-surface">Spain</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<!-- Connector Line extending right -->
+<div class="absolute right-[-24px] top-1/2 w-6 h-[1px] bg-primary/50"></div>
+<div class="absolute right-[-24px] bottom-1/2 w-[1px] h-[calc(50%+24px)] bg-primary/50"></div>
+</div>
+</div>
+<!-- Next Round Column (Semi-Final result of left matches) -->
+<div class="flex flex-col justify-center gap-12 w-80 relative">
+<!-- Connecting line from left -->
+<div class="absolute left-[-24px] top-1/2 w-6 h-[1px] bg-primary/50"></div>
+<!-- Matchup 3 (Semi Final) -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center px-2">
+<span class="font-label-sm text-label-sm text-primary">Semi-Final 1</span>
+</div>
+<!-- Team 1 (Advanced from Match 1) -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-6 h-4 bg-white border border-outline/50 flex items-center justify-center text-[8px] text-black font-bold">FRA</div>
+<span class="font-title-md text-body-md text-on-surface">France</span>
+</div>
+</div>
+<!-- Team 2 (Advanced from Match 2) -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-6 h-4 bg-white border border-outline/50 flex items-center justify-center text-[8px] text-black font-bold">ESP</div>
+<span class="font-title-md text-body-md text-on-surface">Spain</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Background elements -->
+<div class="absolute inset-0 pointer-events-none opacity-5 flex items-center justify-center">
+<span class="material-symbols-outlined text-[400px] text-primary">emoji_events</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-unit*6 border-t border-outline-variant/20 bg-surface-container-lowest dark:bg-surface-container-lowest mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto gap-4">
+<div class="font-title-md text-title-md text-on-surface">GLOBAL XI</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Academic Documentation</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Methodology</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm">
+                © 2024 Global XI Intelligence. An NLP-driven research initiative.
+            </div>
+</div>
+</footer>
+
+
+</body></html>
