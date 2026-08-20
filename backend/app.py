@@ -213,6 +213,10 @@ def ask_question_api(question):
 # 2. Flask Routes
 # -------------------------------------------------
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"status": "GLOBAL XI NLP API running"}), 200
+
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "healthy"}), 200
